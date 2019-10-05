@@ -1,0 +1,37 @@
+{
+  "customers": [
+    {
+      "dni": "16619925",
+      "name": "alberto tonas",
+      "age": 34
+    },
+    {
+      "dni": "15645645",
+      "name": "rigoberto menchu",
+      "age": 12
+    },
+    {
+      "dni": "264829100",
+      "name": "florinda mesas",
+      "age": 58
+    }
+    
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
