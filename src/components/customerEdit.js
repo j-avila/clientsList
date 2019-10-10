@@ -1,7 +1,8 @@
 import React from 'react';
-import { reduxForm, Field } from 'redux-form'
 import PropTypes from 'prop-types';
-import { setPropsAsiInitial } from '../helplers/wrapper';
+import { reduxForm, Field } from 'redux-form'
+import { setPropsAsInitial } from '../helplers/wrapper';
+import CustomerActions from './customerAction'
 
 /* const isValid = value => (
   !value && "este campo es requerido"
@@ -25,7 +26,7 @@ const MyField = ({input, meta, type}) =>(
   </div>
 )
 
-const CustomerEdit = ({name, dni, age, handleSubmit, submitting}) => {
+const CustomerEdit = ({name, dni, age, handleSubmit, onBack, submitting}) => {
   return (
     <div>
       <div className="customer-data">
@@ -57,7 +58,10 @@ const CustomerEdit = ({name, dni, age, handleSubmit, submitting}) => {
               />
               
           </div>
-          <button disabled={submitting} >Enviar</button>
+          <CustomerActions>
+            <button type="submit" disabled={submitting}>Enviar</button>
+            <button type="button" onClick={onBack}>Cancelar</button>
+          </CustomerActions>
         </form>
       </div>
     </div>
@@ -70,9 +74,9 @@ CustomerEdit.propTypes = {
   age: PropTypes.number,
 }
 
-const editForm = reduxForm({
+const EditForm = reduxForm({
   form: 'customerEdit',
   validate
 })(CustomerEdit)
 
-export default setPropsAsiInitial(editForm);
+export default setPropsAsInitial(EditForm);

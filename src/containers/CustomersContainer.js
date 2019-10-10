@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {fetchCustomers} from '../actions/fetchCustomers'
 import AppFrame from '../components/appFrame'
-import CustomersList from '../customersList'
+import CustomersList from '../components/customersList'
 import CustomerActions from '../components/customerAction'
 import { getCustomers } from '../selectors/customers'
 
