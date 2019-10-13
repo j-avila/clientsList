@@ -33,11 +33,15 @@ code {
     cursor: pointer;
     background: lighten($bg, 20%);
   }
+  &:disabled{
+    background: grey;
+  }
 }
 
 button{
   @include but(#76ec8b, white);
   margin: .5rem;
+  i{ margin-right: .5rem;}
 }
 
 .app-frame{

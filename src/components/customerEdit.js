@@ -14,19 +14,24 @@ const isNumber = value => (
 
 const validate = values => {
   const error = {}
-  if(!values.name){ error.name = "el nombre es requerido" }
-  if(!values.dni){ error.dni = "el DNI es requerido" }
+  if (!values.name) { error.name = "el nombre es requerido" }
+  if (!values.dni) { error.dni = "el DNI es requerido" }
   return error
 }
 
-const MyField = ({input, meta, type}) =>(
+const toNumber = value => value && Number(value)
+// const toString = value => value && toString(value)
+const onlyGrow = (value, previousValue, values) =>
+  value && previousValue && (value > previousValue ? value : previousValue)
+
+const MyField = ({ input, meta, type }) => (
   <div>
-    <input {...input} type={!type ? "text" : type}/>
-    {meta.touched && meta.error  && <span>{meta.error}</span>}
+    <input {...input} type={!type ? "text" : type} />
+    {meta.touched && meta.error && <span>{meta.error}</span>}
   </div>
 )
 
-const CustomerEdit = ({name, dni, age, handleSubmit, onBack, submitting}) => {
+const CustomerEdit = ({ name, dni, age, handleSubmit, onBack, submitting }) => {
   return (
     <div>
       <div className="customer-data">
@@ -37,16 +42,16 @@ const CustomerEdit = ({name, dni, age, handleSubmit, onBack, submitting}) => {
             <Field
               name="name"
               component={MyField}
-              // validate={isValid}
-              />
+            // validate={isValid}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="dni">DNI</label>
             <Field
               name="dni"
               component={MyField}
-              // validate={isValid}
-              />
+            // validate={isValid}
+            />
           </div>
           <div className="form-group">
             <label htmlFor="age">Edad</label>
@@ -55,11 +60,16 @@ const CustomerEdit = ({name, dni, age, handleSubmit, onBack, submitting}) => {
               type="number"
               component={MyField}
               validate={isNumber}
-              />
-              
+              parse={toNumber}
+              normalize={onlyGrow}
+            />
+
           </div>
           <CustomerActions>
-            <button type="submit" disabled={submitting}>Enviar</button>
+            <button type="submit" disabled={submitting}>
+              {submitting && <i className="fas fa-compact-disc fa-spin"></i>}
+              Enviar
+            </button>
             <button type="button" onClick={onBack}>Cancelar</button>
           </CustomerActions>
         </form>

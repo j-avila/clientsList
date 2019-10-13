@@ -1,21 +1,23 @@
 {
   "customers": [
     {
+      "id": "16619925",
       "dni": "16619925",
-      "name": "alberto tonas",
-      "age": 34
+      "name": "tosin abasi",
+      "age": 29
     },
     {
+      "id": "15645645",
       "dni": "15645645",
-      "name": "rigoberto menchu",
-      "age": 12
+      "name": "stan brickwell",
+      "age": 35
     },
     {
+      "id": "264829100",
       "dni": "264829100",
-      "name": "florinda mesas",
+      "name": "mike portnoy",
       "age": 58
     }
-    
   ],
   "posts": [
     {

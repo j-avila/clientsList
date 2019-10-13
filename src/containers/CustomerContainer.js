@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchCustomers } from '../actions/fetchCustomers'
+import { updateCustomer } from '../actions/updateCustomer'
 import AppFrame from '../components/appFrame'
 import { getCustomerByDni } from '../selectors/customers'
 import CustomerData from '../components/customerData'
@@ -16,10 +17,16 @@ class CustomerContainer extends Component {
 
   handleSubmit = values => {
     console.log(JSON.stringify(values))
+    const {id} = values
+    return this.props.updateCustomer(id, values)
 
   }
 
   handleOnBack = () => {
+    this.props.history.goBack()
+  }
+
+  handleSuccess = () => {
     this.props.history.goBack()
   }
 
@@ -31,6 +38,7 @@ class CustomerContainer extends Component {
           return <CustomerControl 
                   {...this.props.customer}
                   onSubmit={this.handleSubmit}
+                  onSubmitSuccess={this.handleSuccess}
                   onBack={this.handleOnBack}
                 />
         }
@@ -57,7 +65,8 @@ const mapStateToprops = (state, props) =>({
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators ({
-    fetchCustomers
+    fetchCustomers,
+    updateCustomer
   }, dispatch)
 }
 
