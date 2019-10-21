@@ -4,6 +4,7 @@ import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchCustomers } from '../actions/fetchCustomers'
 import { updateCustomer } from '../actions/updateCustomer'
+// import { SubmissionError } from 'redux-form'
 import AppFrame from '../components/appFrame'
 import { getCustomerByDni } from '../selectors/customers'
 import CustomerData from '../components/customerData'
@@ -19,8 +20,12 @@ class CustomerContainer extends Component {
     console.log(JSON.stringify(values))
     const {id} = values
     return this.props.updateCustomer(id, values)
-
-  }
+    /* .then( r => {
+      if(r.error){
+        throw new SubmissionError(r.payload)
+      }
+    }) */
+  }  
 
   handleOnBack = () => {
     this.props.history.goBack()

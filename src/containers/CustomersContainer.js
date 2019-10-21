@@ -18,7 +18,8 @@ class CustomersContainer extends Component {
   }
 
   componentDidMount() {
-    this.props.fetchCustomers()
+    this.props.customers.length === 0 &&
+      this.props.fetchCustomers()
   }
   
 

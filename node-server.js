@@ -1,3 +1,4 @@
+
 // server.js
 const jsonServer = require('json-server')
 const server = jsonServer.create()
@@ -10,19 +11,19 @@ server.listen(3001, () => {
   console.log('JSON Server is running')
 })
 
-server.put('/customers/30000001', (req, res) => {
+server.put('/customers/16619925', (req, res) => {
   let body = [];
   req.on('data', (chunk) => {
     body.push(chunk);
   }).on('end', () => {
     body = JSON.parse(Buffer.concat(body).toString());
     console.log(JSON.stringify(body));
-    if (body.age && body.age > 18) {
+    if (body.age && body.age < 18) {
       console.log("error de validación");
       return res.send({ 
         error: true,
         validation: { 
-          age: 'Debe ser menor de edad',
+          age: 'Debe ser mayor de edad',
           // name: 'El nombre es incorrecto'
         }
       });
@@ -35,4 +36,3 @@ server.put('/customers/30000001', (req, res) => {
 })
 
 server.use(router)
-

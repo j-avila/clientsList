@@ -4,6 +4,7 @@ import './App.scss';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
 import CustomerContainer from './containers/CustomerContainer'
+import NewCustomerContainer from './containers/NewCustomerContainer';
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <Route exact path="/" component={HomeContainer} />
         <Route exact path="/customers" component={CustomersContainer} />
         <Switch>
-          <Route path="/customers/new" component={CustomersContainer}/>
+          <Route path="/customers/new" component={NewCustomerContainer}/>
           {/* //aqui esta el problema */}
           <Route path="/customers/:dni" render={ props => <CustomerContainer dni={props.match.params.dni} />}/> 
         </Switch>
