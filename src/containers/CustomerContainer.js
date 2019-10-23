@@ -4,6 +4,7 @@ import { Route, withRouter } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { fetchCustomers } from '../actions/fetchCustomers'
 import { updateCustomer } from '../actions/updateCustomer'
+import { deleteCustomer } from '../actions/deleteCustomer'
 // import { SubmissionError } from 'redux-form'
 import AppFrame from '../components/appFrame'
 import { getCustomerByDni } from '../selectors/customers'
@@ -35,18 +36,35 @@ class CustomerContainer extends Component {
     this.props.history.goBack()
   }
 
+  handleDelete = (id) => {
+    this.props.deleteCustomer(id).then(
+      console.log(id),
+      this.props.history.goBack()
+    )
+  }
+
+  renderControl = (isEdit, isDelete) => {
+    const CustomerControl = isEdit ? CustomerEdit : CustomerData
+    return <CustomerControl 
+            {...this.props.customer}
+            onSubmit={this.handleSubmit}
+            onSubmitSuccess={this.handleSuccess}
+            onBack={this.handleOnBack}
+            isDeleteAllow={!!isDelete}
+            onDelete={this.handleDelete}
+          />
+  }
+
   renderBody = () => (
     <Route path="/customers/:dni/edit"
       children={
-        ({match}) => {
-          const CustomerControl = match ? CustomerEdit : CustomerData
-          return <CustomerControl 
-                  {...this.props.customer}
-                  onSubmit={this.handleSubmit}
-                  onSubmitSuccess={this.handleSuccess}
-                  onBack={this.handleOnBack}
-                />
-        }
+        ({ match: isEdit }) => (
+          <Route path="/customers/:dni/del" children={
+            ({ match: isDelete }) => (
+              this.renderControl(isEdit, isDelete)
+            )
+          } />
+        )
       }
     />
   )
@@ -71,7 +89,8 @@ const mapStateToprops = (state, props) =>({
 const mapDispatchToProps = dispatch => {
   return bindActionCreators ({
     fetchCustomers,
-    updateCustomer
+    updateCustomer,
+    deleteCustomer
   }, dispatch)
 }
 

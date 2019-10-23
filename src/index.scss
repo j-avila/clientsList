@@ -42,6 +42,9 @@ button{
   @include but(#76ec8b, white);
   margin: .5rem;
   i{ margin-right: .5rem;}
+  &.delete{
+    @include but(rgb(202, 62, 62), white);
+  }
 }
 
 .app-frame{

@@ -1,18 +1,6 @@
 {
   "customers": [
     {
-      "id": "16619925",
-      "dni": "16619925",
-      "name": "jhonny rabb",
-      "age": 40
-    },
-    {
-      "id": "15645645",
-      "dni": "15645645",
-      "name": "stan brickwell",
-      "age": 36
-    },
-    {
       "id": "264829100",
       "dni": "264829100",
       "name": "mike portnoy",
@@ -53,12 +41,6 @@
       "dni": "5422345",
       "age": 70,
       "id": "_Tp5r_E"
-    },
-    {
-      "name": "richard christie",
-      "dni": "9876543",
-      "age": 50,
-      "id": "H-4w8CY"
     }
   ],
   "posts": [
