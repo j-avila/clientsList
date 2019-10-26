@@ -52,6 +52,13 @@ button{
   position: relative;
   margin: 0 auto;
   padding: .8rem;
+  footer{
+    width: 100%;
+    margin-top: 1rem;
+    padding: .5rem 1rem;
+    background: #d8d8d8;
+    color: rgb(37, 37, 37);
+  }
 }
 
 .customers-list{

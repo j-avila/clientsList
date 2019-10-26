@@ -4,6 +4,8 @@ import { reduxForm, Field } from 'redux-form'
 import { setPropsAsInitial } from '../helplers/wrapper';
 import CustomerActions from './customerAction'
 import { Prompt } from 'react-router-dom';
+import { accessControl } from '../helplers/accessControl';
+import { CUSTOMER_EDIT } from '../constants';
 
 
 const isValid = value => (
@@ -107,9 +109,9 @@ CustomerEdit.propTypes = {
   age: PropTypes.number,
 }
 
-const EditForm = reduxForm({
+const CustomerEditForm = reduxForm({
   form: 'customerEdit',
   validate
 })(CustomerEdit)
 
-export default setPropsAsInitial(EditForm);
+export default accessControl([CUSTOMER_EDIT])(setPropsAsInitial(CustomerEditForm)); 
