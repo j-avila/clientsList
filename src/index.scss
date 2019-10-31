@@ -61,6 +61,26 @@ button{
   }
 }
 
+.homepage{
+  form{
+    justify-content: center;
+    display: flex;
+    align-items: flex-end;
+    .form-group{
+      padding: 1rem;
+      align-items: center;
+      div{
+        display: flex;
+        flex-direction: column;
+        span{
+          color: red;
+          font-size: x-small;
+        }
+      }
+    }
+  }
+}
+
 .customers-list{
   margin-bottom: 1rem;
   .customer-listItem{

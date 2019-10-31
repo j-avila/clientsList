@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import CustomerListItem from './customerListItem';
+import { accessControl } from '../helplers/accessControl';
+import { CUSTOMER_LIST } from '../constants';
 
 const CustomersList = ({customers, urlPath}) => {
   return (
@@ -26,4 +28,4 @@ CustomersList.propTypes = {
   urlPath: PropTypes.string,
 };
 
-export default CustomersList;
+export default accessControl([CUSTOMER_LIST])(CustomersList);

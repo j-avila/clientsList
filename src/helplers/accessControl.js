@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 export const accessControl = permissionsRequired => WrappedComponent => {
   const SecuredControl = class extends Component {
     render(){
-      const { permissions } = this.props.user
+      const { permissions } = this.props.userActive[0]
       const isAllow = permissionsRequired.every(p => permissions.indexOf(p) >= 0)
 
       return(
@@ -15,5 +15,5 @@ export const accessControl = permissionsRequired => WrappedComponent => {
       
     }
   }
-  return  connect(state => ({user: state.user}))(SecuredControl)
+  return  connect(state => ({userActive: state.userActive}))(SecuredControl)
 }

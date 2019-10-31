@@ -4,7 +4,25 @@
       "id": "264829100",
       "dni": "264829100",
       "name": "mike portnoy",
-      "age": 50
+      "age": 50,
+      "isDeleteAllow": false,
+      "user": {
+        "permissions": [
+          "CUSTOMER_LIST",
+          "CUSTOMER_VIEW",
+          "CUSTOMER_EDIT"
+        ]
+      },
+      "userActive": [
+        {
+          "user": "master user",
+          "permissions": [
+            "CUSTOMER_VIEW",
+            "CUSTOMER_EDIT",
+            "CUSTOMER_LIST"
+          ]
+        }
+      ]
     },
     {
       "name": "josh freese",
@@ -55,6 +73,20 @@
       "id": 1,
       "body": "some comment",
       "postId": 1
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "username": "master user",
+      "role": "admin",
+      "password": "jla13"
+    },
+    {
+      "id": 2,
+      "username": "normal user",
+      "role": "user",
+      "password": "pass"
     }
   ],
   "profile": {
