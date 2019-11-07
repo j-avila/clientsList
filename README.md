@@ -2,6 +2,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
+instructions to run the server: 
+## https://github.com/typicode/json-server
+
 In the project directory, you can run:
 
 ### `npm start`
